@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 //Create New user
 export const createDestination = async(formData) =>{
     "use server"
@@ -11,7 +13,8 @@ export const createDestination = async(formData) =>{
     })
     const data = await res.json()
     if(data.insertedId){
-        // revalidatePath("/users")
+        revalidatePath("/")
+        
     }
     return data
 }
