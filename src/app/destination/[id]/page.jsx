@@ -1,5 +1,6 @@
+import EditModal from "@/app/components/EditModal";
 import { getDestinationId } from "@/app/lib/data";
-// import { EditModal } from "@/components/EditModal";
+
 
 import Image from "next/image";
 import { FaRegCalendar } from "react-icons/fa6";
@@ -19,7 +20,7 @@ const singleDestinationPage = async ({ params }) => {
             <div className="">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex  items-center gap-3 justify-end mt-5 mb-3">
-                        {/* <EditModal destination={destination} /> */}
+                        <EditModal destination={destination}  />
                         {/* <DeleteAlert destination={destination} /> */}
                     </div>
                     <Image
