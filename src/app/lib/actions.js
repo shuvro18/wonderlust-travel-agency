@@ -41,3 +41,20 @@ export const updateDestination = async(formData, params) =>{
 
     return data
 }
+
+
+//Delete 
+
+export const deleteDestination = async(userId) => {
+    "use server"
+    const res = await fetch(`http://localhost:5000/destination/${userId}`,{
+        method : 'DELETE'
+    });
+    const data = await res.json();
+
+    // if(data.deletedCount > 0){
+    //     revalidatePath("/destination")
+    // }
+
+    return data ;
+}

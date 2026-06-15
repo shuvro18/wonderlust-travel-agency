@@ -1,4 +1,6 @@
+import AlertDialogPage from "@/app/components/AlertDialog";
 import EditModal from "@/app/components/EditModal";
+import { deleteDestination } from "@/app/lib/actions";
 import { getDestinationId } from "@/app/lib/data";
 
 
@@ -21,7 +23,7 @@ const singleDestinationPage = async ({ params }) => {
                 <div className="max-w-7xl mx-auto">
                     <div className="flex  items-center gap-3 justify-end mt-5 mb-3">
                         <EditModal destination={destination}  />
-                        {/* <DeleteAlert destination={destination} /> */}
+                        <AlertDialogPage deleteDestination={deleteDestination} destination={destination}></AlertDialogPage>
                     </div>
                     <Image
                         className="w-full h-100 object-cover"
