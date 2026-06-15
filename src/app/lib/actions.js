@@ -18,3 +18,26 @@ export const createDestination = async(formData) =>{
     }
     return data
 }
+
+
+
+//update existing destination
+export const updateDestination = async(formData, params) =>{
+    "use server"
+    const updateDestination = Object.fromEntries(formData.entries());
+    const res = await fetch(`http://localhost:5000/destination/${params}`,{
+        method: 'PATCH',
+        headers:{
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(updateDestination)
+    })
+    const data = await res.json()
+
+    if(data.modifiedCount > 0){
+        revalidatePath(`/destination/${params}`);
+        
+    }
+
+    return data
+}

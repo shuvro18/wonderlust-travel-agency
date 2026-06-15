@@ -11,7 +11,7 @@ import { LuMapPin } from "react-icons/lu";
 const singleDestinationPage = async ({ params }) => {
     const { id } = await params
     const destination = await getDestinationId(id)
-    console.log(destination);
+    
     const { imageUrl, price, destinationName, duration, country, description } = destination;
 
     return (

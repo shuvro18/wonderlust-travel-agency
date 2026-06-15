@@ -1,19 +1,9 @@
-"use client";
 
 
-import {
-    Button,
-    FieldError,
-    Input,
-    Label,
-    ListBox,
-    Modal,
-    Surface,
-    TextArea,
-    TextField,
-    Select,
-} from "@heroui/react";
+
+import { Button, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, TextField, Select, } from "@heroui/react";
 import { BiEdit } from "react-icons/bi";
+import { updateDestination } from "../lib/actions";
 
 export function EditModal({ destination }) {
     const {
@@ -28,22 +18,12 @@ export function EditModal({ destination }) {
         departureDate,
     } = destination;
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const destination = Object.fromEntries(formData.entries());
+    const onSubmit = async (formData) => {
+        "use server"
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${_id}`, {
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(destination),
-            credentials: "include"
-        });
+        return await updateDestination(formData, _id)
 
-        const data = await res.json();
-        console.log(data);
+
     };
     return (
         <Modal>
@@ -61,7 +41,7 @@ export function EditModal({ destination }) {
                         </Modal.Header>
                         <Modal.Body className="p-6">
                             <Surface variant="default">
-                                <form onSubmit={onSubmit} className="p-10 space-y-8">
+                                <form action={onSubmit} className="p-10 space-y-8">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         {/* Destination Name */}
                                         <div className="md:col-span-2">
