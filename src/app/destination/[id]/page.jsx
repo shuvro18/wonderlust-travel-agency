@@ -1,4 +1,5 @@
 import AlertDialogPage from "@/app/components/AlertDialog";
+import BookingCard from "@/app/components/BookingCard";
 import EditModal from "@/app/components/EditModal";
 import { deleteDestination } from "@/app/lib/actions";
 import { getDestinationId } from "@/app/lib/data";
@@ -55,7 +56,7 @@ const singleDestinationPage = async ({ params }) => {
                         </div>
 
 
-                        {/* <BookingCard destination={destination} /> */}
+                        <BookingCard destination={destination} />
                     </div>
 
 
